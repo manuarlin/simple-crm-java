@@ -1,0 +1,13 @@
+server:
+  port: 8180
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/store
+    username: seller
+    password: store
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
