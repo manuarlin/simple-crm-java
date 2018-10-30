@@ -40,12 +40,8 @@ public class CustomerController {
 
     @RequestMapping("/customers/{id}/products")
     public List<Product> findProductsByCustomer(@PathVariable String id) {
-        List<Product> products = new ArrayList<>();
         Optional<Customer> optionalCustomer = customerService.findById(id);
-        if (optionalCustomer.isPresent()) {
-            products = optionalCustomer.get().getProducts();
-        }
-        return products;
+        return optionalCustomer.map(Customer::getProducts).orElse(new ArrayList<>());
     }
 
     @RequestMapping("/customers/{id}/total")
